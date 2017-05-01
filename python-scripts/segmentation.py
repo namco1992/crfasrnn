@@ -29,11 +29,11 @@ _MODEL_FILE = "TVG_CRFRNN_COCO_VOC.caffemodel"  # Contains the trained weights. 
 
 _GPU_DIVICE = 0
 
-_INPUT_PATH = '2016/'
-_OUTPUT_PATH = '2016_output/'
+_INPUT_PATH = 'data/2016/full/'
+_OUTPUT_PATH = 'data/2016_output/'
 
-# _INPUT_PATH = '2012/'
-# _OUTPUT_PATH = '2012_output/'
+# _INPUT_PATH = 'data/2012/full/'
+# _OUTPUT_PATH = 'data/2012_output/'
 
 sys.path.insert(0, _CAFFE_ROOT + "python")
 import caffe
