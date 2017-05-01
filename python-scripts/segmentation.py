@@ -32,6 +32,8 @@ _GPU_DIVICE = 0
 _INPUT_PATH = '2016/'
 _OUTPUT_PATH = '2016_output/'
 
+# _INPUT_PATH = '2012/'
+# _OUTPUT_PATH = '2012_output/'
 
 sys.path.insert(0, _CAFFE_ROOT + "python")
 import caffe
@@ -87,11 +89,11 @@ def crfrnn_segmenter(net, inputs):
     for ix, in_ in enumerate(inputs):
         caffe_in[ix] = in_.transpose((2, 0, 1))
 
-    start_time = time.time()
+    # start_time = time.time()
     out = net.forward_all(**{net.inputs[0]: caffe_in})
-    end_time = time.time()
+    # end_time = time.time()
 
-    print("Time taken to run the network: {:.4f} seconds".format(end_time - start_time))
+    # print("Time taken to run the network: {:.4f} seconds".format(end_time - start_time))
     predictions = out[net.outputs[0]]
 
     return predictions[0].argmax(axis=0).astype(np.uint8)
@@ -178,6 +180,7 @@ def main():
     net = load_pretained_net(_MODEL_DEF_FILE, _MODEL_FILE, gpu_device)
     imgs = os.listdir(_INPUT_PATH)
     for img in imgs:
+        print 'Processing: {}'.format(img)
         run_crfrnn(_INPUT_PATH + img, _OUTPUT_PATH + img, gpu_device, net)
 
 
